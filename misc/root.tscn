@@ -1,0 +1,298 @@
+[gd_scene format=4 uid="uid://r4y6c20uwfmu"]
+
+[ext_resource type="Texture2D" uid="uid://cvo82kkjravjq" path="res://misc/icon.svg" id="1_28aoi"]
+[ext_resource type="Script" uid="uid://bqivw47kmyosm" path="res://misc/root.gd" id="1_l8v81"]
+[ext_resource type="Texture2D" uid="uid://b5y687wvndj8x" path="res://Background/board.png" id="1_pyidc"]
+[ext_resource type="Script" uid="uid://ywjgnisuiws2" path="res://misc/area_2d.gd" id="2_28aoi"]
+[ext_resource type="Texture2D" uid="uid://ba7gw7u6230ph" path="res://Units/dark-piece.png" id="3_vvh5c"]
+[ext_resource type="Texture2D" uid="uid://coe8ngcgmwhlj" path="res://Units/light-piece.png" id="5_jnlp7"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l8v81"]
+texture = ExtResource("1_28aoi")
+texture_region_size = Vector2i(18, 18)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_28aoi"]
+texture = ExtResource("1_pyidc")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_byobk"]
+sources/5 = SubResource("TileSetAtlasSource_28aoi")
+sources/1 = SubResource("TileSetAtlasSource_l8v81")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ukxdj"]
+size = Vector2(96, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_28aoi"]
+size = Vector2(95, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_byobk"]
+size = Vector2(18, 95)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_smb7b"]
+size = Vector2(18, 95)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jek3x"]
+size = Vector2(16, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ukxdj"]
+font_size = 12
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wq052"]
+size = Vector2(16, 16)
+
+[node name="Root" type="Node2D" unique_id=1074051026]
+script = ExtResource("1_l8v81")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=95679582]
+tile_map_data = PackedByteArray("AAABAAEABQAAAAAAAAABAAIABQABAAAAAAABAAMABQAAAAAAAAABAAQABQABAAAAAAACAAEABQABAAAAAAACAAIABQAAAAAAAAACAAMABQABAAAAAAACAAQABQAAAAAAAAADAAEABQAAAAAAAAADAAIABQABAAAAAAADAAMABQAAAAAAAAADAAQABQABAAAAAAAEAAEABQABAAAAAAAEAAIABQAAAAAAAAAEAAMABQABAAAAAAAEAAQABQAAAAAAAAAAAAAAAQAAAAAAAAAAAAUAAQAAAAMAAAAFAAUABQAAAAAAAAAFAAAAAQADAAAAAAAEAAAAAQADAAAAAAADAAAAAQADAAAAAAACAAAAAQADAAAAAAABAAAAAQADAAAAAAAAAAEAAQAAAAMAAAAAAAIAAQAAAAMAAAAAAAMAAQAAAAMAAAAAAAQAAQAAAAMAAAABAAUABQAAAAAAAAACAAUABQABAAAAAAADAAUABQAAAAAAAAAEAAUABQABAAAAAAAFAAQABQABAAAAAAAFAAMABQAAAAAAAAAFAAIABQABAAAAAAAFAAEABQAAAAAAAAAGAAEABQABAAAAAAAGAAMABQABAAAAAAAGAAUABQABAAAAAAAFAAYABQABAAAAAAADAAYABQABAAAAAAABAAYABQABAAAAAAAGAAQABQAAAAAAAAAGAAIABQAAAAAAAAAGAAYABQAAAAAAAAAEAAYABQAAAAAAAAACAAYABQAAAAAAAAAHAAAAAQAGAAAAAAAAAAcAAQAAAAYAAAAHAAcAAQAGAAYAAAAHAAEAAQAGAAMAAAAHAAIAAQAGAAMAAAAHAAMAAQAGAAMAAAAHAAQAAQAGAAMAAAAHAAUAAQAGAAMAAAAHAAYAAQAGAAMAAAAAAAYAAQAAAAMAAAAGAAAAAQADAAAAAAABAAcAAQADAAYAAAACAAcAAQADAAYAAAADAAcAAQADAAYAAAAEAAcAAQADAAYAAAAFAAcAAQADAAYAAAAGAAcAAQADAAYAAAA=")
+tile_set = SubResource("TileSet_byobk")
+
+[node name="WallTop" type="StaticBody2D" parent="." unique_id=1338605917]
+position = Vector2(66, -9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop" unique_id=13440674]
+position = Vector2(-2, 16)
+shape = SubResource("RectangleShape2D_ukxdj")
+
+[node name="WallBottom" type="StaticBody2D" parent="." unique_id=1502710645]
+position = Vector2(69, 139)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallBottom" unique_id=2082081537]
+position = Vector2(-5.5, -19)
+shape = SubResource("RectangleShape2D_28aoi")
+
+[node name="WallLeft" type="StaticBody2D" parent="." unique_id=2129574178]
+position = Vector2(-14, 71)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft" unique_id=367233504]
+position = Vector2(21, -7.5)
+shape = SubResource("RectangleShape2D_byobk")
+
+[node name="WallRight" type="StaticBody2D" parent="." unique_id=350062899]
+position = Vector2(137, 70)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight" unique_id=1671136647]
+position = Vector2(-16, -6)
+shape = SubResource("RectangleShape2D_smb7b")
+
+[node name="Board" type="Node2D" parent="." unique_id=455083384]
+position = Vector2(-5, -2)
+
+[node name="DarkPiece1" type="Area2D" parent="Board" unique_id=89417712]
+position = Vector2(45, 26)
+script = ExtResource("2_28aoi")
+
+[node name="Sprite2D" type="Sprite2D" parent="Board/DarkPiece1" unique_id=1769049072]
+texture = ExtResource("3_vvh5c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/DarkPiece1" unique_id=11161529]
+shape = SubResource("RectangleShape2D_jek3x")
+
+[node name="RayCast2D" type="RayCast2D" parent="Board/DarkPiece1" unique_id=322258616]
+target_position = Vector2(16, 16)
+
+[node name="Label" type="Label" parent="Board/DarkPiece1" unique_id=1210068267]
+offset_left = -3.0
+offset_top = -22.0
+offset_right = 4.0
+offset_bottom = -5.0
+text = "v"
+label_settings = SubResource("LabelSettings_ukxdj")
+metadata/_edit_use_anchors_ = true
+
+[node name="DarkPiece2" type="Area2D" parent="Board" unique_id=1355576002]
+position = Vector2(77, 26)
+
+[node name="Sprite2D" type="Sprite2D" parent="Board/DarkPiece2" unique_id=1155463840]
+texture = ExtResource("3_vvh5c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/DarkPiece2" unique_id=1099568343]
+shape = SubResource("RectangleShape2D_jek3x")
+
+[node name="RayCast2D" type="RayCast2D" parent="Board/DarkPiece2" unique_id=2145534680]
+target_position = Vector2(16, 16)
+
+[node name="DarkPiece3" type="Area2D" parent="Board" unique_id=798531826]
+position = Vector2(109, 26)
+
+[node name="Sprite2D" type="Sprite2D" parent="Board/DarkPiece3" unique_id=549403573]
+texture = ExtResource("3_vvh5c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/DarkPiece3" unique_id=1000523002]
+shape = SubResource("RectangleShape2D_jek3x")
+
+[node name="RayCast2D" type="RayCast2D" parent="Board/DarkPiece3" unique_id=581217236]
+target_position = Vector2(16, 16)
+
+[node name="DarkPiece4" type="Area2D" parent="Board" unique_id=371025175]
+position = Vector2(29, 42)
+
+[node name="Sprite2D" type="Sprite2D" parent="Board/DarkPiece4" unique_id=2033602147]
+texture = ExtResource("3_vvh5c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/DarkPiece4" unique_id=27501409]
+shape = SubResource("RectangleShape2D_jek3x")
+
+[node name="RayCast2D" type="RayCast2D" parent="Board/DarkPiece4" unique_id=2037209508]
+target_position = Vector2(16, 16)
+
+[node name="DarkPiece5" type="Area2D" parent="Board" unique_id=558132215]
+position = Vector2(61, 42)
+
+[node name="Sprite2D" type="Sprite2D" parent="Board/DarkPiece5" unique_id=924282924]
+texture = ExtResource("3_vvh5c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/DarkPiece5" unique_id=2139054344]
+shape = SubResource("RectangleShape2D_jek3x")
+
+[node name="RayCast2D" type="RayCast2D" parent="Board/DarkPiece5" unique_id=957494703]
+target_position = Vector2(16, 16)
+
+[node name="DarkPiece6" type="Area2D" parent="Board" unique_id=1379275611]
+position = Vector2(93, 42)
+
+[node name="Sprite2D" type="Sprite2D" parent="Board/DarkPiece6" unique_id=1439395807]
+texture = ExtResource("3_vvh5c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/DarkPiece6" unique_id=1026798141]
+shape = SubResource("RectangleShape2D_jek3x")
+
+[node name="RayCast2D" type="RayCast2D" parent="Board/DarkPiece6" unique_id=504385453]
+target_position = Vector2(16, 16)
+
+[node name="LightPiece1" type="Area2D" parent="Board" unique_id=1346513026]
+position = Vector2(29, 106)
+
+[node name="Sprite2D" type="Sprite2D" parent="Board/LightPiece1" unique_id=1030373829]
+texture = ExtResource("5_jnlp7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/LightPiece1" unique_id=1822605557]
+shape = SubResource("RectangleShape2D_wq052")
+
+[node name="RayCast2D" type="RayCast2D" parent="Board/LightPiece1" unique_id=329950328]
+target_position = Vector2(16, 16)
+
+[node name="LightPiece2" type="Area2D" parent="Board" unique_id=446858458]
+position = Vector2(45, 90)
+
+[node name="Sprite2D" type="Sprite2D" parent="Board/LightPiece2" unique_id=140893612]
+texture = ExtResource("5_jnlp7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/LightPiece2" unique_id=214076406]
+shape = SubResource("RectangleShape2D_wq052")
+
+[node name="RayCast2D" type="RayCast2D" parent="Board/LightPiece2" unique_id=760724154]
+target_position = Vector2(16, 16)
+
+[node name="LightPiece3" type="Area2D" parent="Board" unique_id=371743769]
+position = Vector2(61, 106)
+
+[node name="Sprite2D" type="Sprite2D" parent="Board/LightPiece3" unique_id=1834367639]
+texture = ExtResource("5_jnlp7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/LightPiece3" unique_id=59379697]
+shape = SubResource("RectangleShape2D_wq052")
+
+[node name="RayCast2D" type="RayCast2D" parent="Board/LightPiece3" unique_id=378890210]
+target_position = Vector2(16, 16)
+
+[node name="LightPiece4" type="Area2D" parent="Board" unique_id=1116410924]
+position = Vector2(77, 90)
+
+[node name="Sprite2D" type="Sprite2D" parent="Board/LightPiece4" unique_id=1669115955]
+texture = ExtResource("5_jnlp7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/LightPiece4" unique_id=756259098]
+shape = SubResource("RectangleShape2D_wq052")
+
+[node name="RayCast2D" type="RayCast2D" parent="Board/LightPiece4" unique_id=212031589]
+target_position = Vector2(16, 16)
+
+[node name="LightPiece5" type="Area2D" parent="Board" unique_id=929448740]
+position = Vector2(93, 106)
+
+[node name="Sprite2D" type="Sprite2D" parent="Board/LightPiece5" unique_id=888710720]
+texture = ExtResource("5_jnlp7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/LightPiece5" unique_id=196989514]
+shape = SubResource("RectangleShape2D_wq052")
+
+[node name="RayCast2D" type="RayCast2D" parent="Board/LightPiece5" unique_id=2032581491]
+target_position = Vector2(16, 16)
+
+[node name="LightPiece6" type="Area2D" parent="Board" unique_id=365933199]
+position = Vector2(109, 90)
+
+[node name="Sprite2D" type="Sprite2D" parent="Board/LightPiece6" unique_id=1460139988]
+texture = ExtResource("5_jnlp7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/LightPiece6" unique_id=1952394575]
+shape = SubResource("RectangleShape2D_wq052")
+
+[node name="RayCast2D" type="RayCast2D" parent="Board/LightPiece6" unique_id=1108177947]
+target_position = Vector2(16, 16)
