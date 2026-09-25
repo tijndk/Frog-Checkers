@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://dl6mfue03tyrw"]
-
-[ext_resource type="Script" uid="uid://psdhlwk2nogc" path="res://scripts/Highlight.gd" id="1_lnphh"]
-
-[node name="Highlight" type="Node2D" unique_id=56091662]
-script = ExtResource("1_lnphh")
