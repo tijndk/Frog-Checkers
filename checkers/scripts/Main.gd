@@ -8,6 +8,8 @@ const HIGHLIGHT = preload("res://scenes/Highlight.tscn")
 @onready var board = $Board
 @onready var map = $Board/Map
 @onready var turn_label: Label = $TurnLabel
+@onready var game_over_panel: Panel = $GameOverPanel
+@onready var winner_label: Label = $GameOverPanel/WinnerLabel
 
 var visual_units = [] # de visuele schijven als sprites
 var data_pieces = [] # de schijven als data/code
@@ -18,6 +20,7 @@ var mandatory_highlights = []
 var selected_piece = Vector2.ZERO # geselecteerde schijf
 var current_player = 1
 var forced_capture := false
+var game_over := false
 
 # diagonale richtingen
 const PLAYER_1_DIRECTIONS = [
@@ -159,6 +162,9 @@ func _ready() -> void:
 
 # wat er gebeurt wanneer een vakje geselecteerd wordt
 func _on_cursor_accept_pressed(tile):
+	if game_over:
+		return
+		
 	var clicked_piece = get_piece_at_position(tile)
 	
 	if not clicked_piece.is_empty():
@@ -269,12 +275,11 @@ func _on_cursor_accept_pressed(tile):
 			else:
 				current_player = 1
 			
+			if check_game_over():
+				return
+				
 			update_turn_label()
 			show_mandatory_capture_highlights()
-
-func _on_quit_button_pressed() -> void:
-	get_tree().quit()
-	pass # Replace with function body.
 
 func setup_board() -> void:
 	var board_pixel_size = grid.size * grid.tile_size
@@ -354,3 +359,44 @@ func show_mandatory_capture_highlights() -> void:
 	
 	selected_piece = old_selected_piece
 	possible_moves = old_possible_moves
+
+func player_has_legal_move(player: int) -> bool:
+	var old_selected_piece = selected_piece
+	var old_possible_moves = possible_moves.duplicate()
+
+	for piece in data_pieces:
+		if piece["player"] != player:
+			continue
+
+		selected_piece = piece["position"]
+
+		if not get_possible_moves().is_empty():
+			selected_piece = old_selected_piece
+			possible_moves = old_possible_moves
+			return true
+
+	selected_piece = old_selected_piece
+	possible_moves = old_possible_moves
+	return false
+
+func check_game_over() -> bool:
+	if player_has_legal_move(current_player):
+		return false
+		
+	var winning_player = 2 if current_player == 1 else 1
+	
+	if winning_player == 1:
+		winner_label.text = "Donker heeft gewonnen!"
+	else:
+		winner_label.text = "Licht heeft gewonnen!"
+	
+	game_over_panel.show()
+	game_over = true
+	return true
+
+func _on_restart_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/TitleScreen.tscn")
+
+func _on_quit_button_pressed() -> void:
+	get_tree().quit()
+	pass # Replace with function body.
