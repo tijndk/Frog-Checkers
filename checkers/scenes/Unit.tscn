@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://xcml356ol44f"]
+
+[ext_resource type="Script" uid="uid://bxnsgg6j7f1ut" path="res://scripts/Unit.gd" id="1_ctwoc"]
+[ext_resource type="Texture2D" uid="uid://ba7gw7u6230ph" path="res://Units/dark-piece.png" id="2_davkp"]
+[ext_resource type="Texture2D" uid="uid://coe8ngcgmwhlj" path="res://Units/light-piece.png" id="3_davkp"]
+[ext_resource type="Texture2D" uid="uid://cdl3y3nie7frs" path="res://Units/crown.png" id="4_nqku5"]
+
+[sub_resource type="Animation" id="Animation_5wnup"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1sk4h"]
+resource_name = "idle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.06666672),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_baxm0"]
+resource_name = "selected"
+length = 1.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1.3528494, 1.3528494, 1.3528494, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_of1k5"]
+_data = {
+&"RESET": SubResource("Animation_5wnup"),
+&"idle": SubResource("Animation_1sk4h"),
+&"selected": SubResource("Animation_baxm0")
+}
+
+[node name="Unit" type="Path2D" unique_id=211723991]
+script = ExtResource("1_ctwoc")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="." unique_id=271352887]
+rotates = false
+loop = false
+
+[node name="DarkSprite" type="Sprite2D" parent="PathFollow2D" unique_id=1598780042]
+texture = ExtResource("2_davkp")
+
+[node name="LightSprite" type="Sprite2D" parent="PathFollow2D" unique_id=2054562584]
+texture = ExtResource("3_davkp")
+
+[node name="Crown" type="Sprite2D" parent="PathFollow2D" unique_id=234592361]
+visible = false
+position = Vector2(0, -9)
+texture = ExtResource("4_nqku5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1726713739]
+root_node = NodePath("../PathFollow2D/DarkSprite")
+libraries/ = SubResource("AnimationLibrary_of1k5")
+autoplay = &"idle"

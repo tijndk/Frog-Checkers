@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://qnn0e3idt413"]
+
+[ext_resource type="PackedScene" uid="uid://ctxj5r3fn3g78" path="res://Background/Map.tscn" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://b002362k158oq" path="res://Main.gd" id="1_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://si4npbg4utrk" path="res://misc/cursor.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://dl6mfue03tyrw" path="res://highlight.tscn" id="4_1bvp3"]
+
+[node name="Main" type="Node2D" unique_id=1571162162]
+script = ExtResource("1_1bvp3")
+
+[node name="Map" parent="." unique_id=1058328464 instance=ExtResource("1_0xm2m")]
+
+[node name="Cursor" parent="." unique_id=1822659240 instance=ExtResource("3_h2yge")]
+
+[node name="Highlight" parent="." unique_id=56091662 instance=ExtResource("4_1bvp3")]
+
+[connection signal="accept_pressed" from="Cursor" to="." method="_on_cursor_accept_pressed"]
